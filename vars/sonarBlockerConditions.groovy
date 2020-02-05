@@ -22,11 +22,11 @@ String metric=a.replaceAll("\\[", "").replaceAll("\\]","");
 String b = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].operator
 String operator=b.replaceAll("\\[", "").replaceAll("\\]","");
 
-String c = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].warning
-String warning=c.replaceAll("\\[", "").replaceAll("\\]","");
+Integer c = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].warning
+Integer warning=c.replaceAll("\\[", "").replaceAll("\\]","");
 	
-String d = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].error
-String error=d.replaceAll("\\[", "").replaceAll("\\]","");
+Integer d = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].error
+Integer error=d.replaceAll("\\[", "").replaceAll("\\]","");
 	
 create(metric,operator,warning,error)
 
