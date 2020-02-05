@@ -1,7 +1,7 @@
 import groovy.json.*
 
 @NonCPS
-create(String metric,String operator,Integer warning,Integer error){
+create(String metric,String operator,int warning,int error){
 echo metric
 def jsonSlurper = new JsonSlurper()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/sonar/QualityGateDetails.json"),"UTF-8"))
@@ -22,11 +22,11 @@ String metric=a.replaceAll("\\[", "").replaceAll("\\]","");
 String b = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].operator
 String operator=b.replaceAll("\\[", "").replaceAll("\\]","");
 
-Integer c = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].warning
-Integer warning=c.replaceAll("\\[", "").replaceAll("\\]","");
+int c = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].warning
+Int warning=c.replaceAll("\\[", "").replaceAll("\\]","");
 	
-Integer d = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].error
-Integer error=d.replaceAll("\\[", "").replaceAll("\\]","");
+int d = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].error
+Int error=d.replaceAll("\\[", "").replaceAll("\\]","");
 	
 create(metric,operator,warning,error)
 
