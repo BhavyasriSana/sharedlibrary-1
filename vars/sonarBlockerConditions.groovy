@@ -1,7 +1,7 @@
 import groovy.json.*
 
 @NonCPS
-create(String MetricCondition,String operator,String warning,String error){
+create(String metric,String operator,String warning,String error){
 def jsonSlurper = new JsonSlurper()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/sonar/QualityGateDetails.json"),"UTF-8"))
 def resultJson = jsonSlurper.parse(reader)
@@ -27,6 +27,6 @@ String warning=c.replaceAll("\\[", "").replaceAll("\\]","");
 String d = jsonObj.code_quality.projects.project.quality_gate.metrics[0].error
 String error=d.replaceAll("\\[", "").replaceAll("\\]","");
 	
-create(MetricCondition,operator,warning,error)
+create(metric,operator,warning,error)
 
 }
