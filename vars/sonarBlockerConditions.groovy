@@ -16,16 +16,16 @@ def jsonString = jsondata
 
 def jsonObj = readJSON text: jsonString
 
-String a = jsonObj.code_quality.projects.project.quality_gate.metrics[0].metric
+String a = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].metric
 String metric=a.replaceAll("\\[", "").replaceAll("\\]","");
 	
-String b = jsonObj.code_quality.projects.project.quality_gate.metrics[0].operator
+String b = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].operator
 String operator=b.replaceAll("\\[", "").replaceAll("\\]","");
 
-String c = jsonObj.code_quality.projects.project.quality_gate.metrics[0].warning
+String c = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].warning
 String warning=c.replaceAll("\\[", "").replaceAll("\\]","");
 	
-String d = jsonObj.code_quality.projects.project.quality_gate.metrics[0].error
+String d = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[0].error
 String error=d.replaceAll("\\[", "").replaceAll("\\]","");
 	
 create(metric,operator,warning,error)
