@@ -11,5 +11,5 @@ String b = jsonObj.code_quality.projects.project.project_name
 String ProjectName=b.replaceAll("\\[", "").replaceAll("\\]","");
 //def credentials = resultJson.cname
 	sh "curl --location --request POST 'http://ec2-3-16-33-107.us-east-2.compute.amazonaws.com:9000/api/projects/create?key=${ProjectKey}&name=${ProjectName}' \
---header 'Authorization: Basic YWRtaW46YWRtaW4='"
+--header 'Authorization: Basic YWRtaW46YWRtaW4=' -o ProjectDetails.json"
 }
