@@ -1,33 +1,15 @@
-import groovy.json.JsonSlurper 
+import groovy.json.*
 
 @NonCPS
-createRepo(String data){
-def jsonSlurper = new JsonSlurper() 
-def resultJson = jsonSlurper.parseText(data)
-def credentials = resultJson.cname
-def delqid = resultJson.delqid
-//def projUrl = resultJson.url
+create(){
+def jsonSlurper = new JsonSlurper()
+def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/sonar/QualityGateDetails.json"),"UTF-8"))
+def resultJson = jsonSlurper.parse(reader)
+def GateId = resultJson.id
 
-httpRequest authentication: "${credentials}", contentType: "APPLICATION_JSON", 
-    
-    httpMode: 'POST',/* requestBody: 
-  """{
-    	"data":
-	{
-		"repoType": "hosted",
-        "id": ${rid},
-        "name": ${repoName},
-        "repoPolicy": "RELEASE",
-        "provider": "maven2",
-        "providerRole": "org.sonatype.nexus.proxy.repository.Repository",
-        "exposed": true,
-        "format": "maven2"
-	}
-        
-   }""",*/ url: "http://ec2-3-16-33-107.us-east-2.compute.amazonaws.com:9000/api/qualitygates/destroy?id=${delqid}"
-	
+	sh "curl --location --request POST 'http://3.16.33.107:9000/api/projects/delete?key=${GateId}' \
+--header 'Authorization: Basic YWRtaW46YWRtaW4='"
 }
-	def call(){
-def request = libraryResource 'sonarConnectorData.json'
-createRepo(request)
+def call(){
+create()
 }
