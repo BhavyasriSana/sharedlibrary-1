@@ -10,6 +10,6 @@ def GateId = resultJson.id
 --header 'Authorization: Basic YWRtaW46YWRtaW4='"
 }
 	def call(){
-def request = libraryResource 'QualityGateDetails.json'
+def request = Workspace 'QualityGateDetails.json'
 createRepo(request)
 }
