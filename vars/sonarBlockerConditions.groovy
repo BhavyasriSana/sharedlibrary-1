@@ -1,7 +1,7 @@
 import groovy.json.*
 
 @NonCPS
-create(String metric,String operator,String warning,String error){
+create(String metric,String operator,Integer warning,Integer error){
 echo metric
 def jsonSlurper = new JsonSlurper()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/sonar/QualityGateDetails.json"),"UTF-8"))
