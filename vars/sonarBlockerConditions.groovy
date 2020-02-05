@@ -1,7 +1,7 @@
 import groovy.json.*
 
 @NonCPS
-create(){
+create(String MetricCondition,String operator,String warning,String error){
 def jsonSlurper = new JsonSlurper()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/sonar/QualityGateDetails.json"),"UTF-8"))
 def resultJson = jsonSlurper.parse(reader)
@@ -10,7 +10,23 @@ def GateId = resultJson.id
 	sh "curl --location --request POST 'http://3.16.33.107:9000/api/qualitygates/create_condition?gateId=${GateId}&metric=blocker_violations&op=GT&warning=5&error=10' \
 --header 'Authorization: Basic YWRtaW46YWRtaW4='"
 }
-def call(){
-create()
+def call(jsondata){
+def jsonString = jsondata
+
+def jsonObj = readJSON text: jsonString
+
+String a = jsonObj.code_quality.projects.project.quality_gate.metrics[0].metric
+String MetricCondition=a.replaceAll("\\[", "").replaceAll("\\]","");
+	
+String b = jsonObj.code_quality.projects.project.quality_gate.metrics[0].operator
+String operator=b.replaceAll("\\[", "").replaceAll("\\]","");
+
+String c = jsonObj.code_quality.projects.project.quality_gate.metrics[0].warning
+String warning=c.replaceAll("\\[", "").replaceAll("\\]","");
+	
+String d = jsonObj.code_quality.projects.project.quality_gate.metrics[0].error
+String error=d.replaceAll("\\[", "").replaceAll("\\]","");
+	
+create(MetricCondition,operator,warning,error)
 
 }
