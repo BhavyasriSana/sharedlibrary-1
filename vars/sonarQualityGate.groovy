@@ -1,6 +1,6 @@
 def call(jsondata){
 def jsonString = jsondata
-println(jsonString)
+//println(jsonString)
 def jsonObj = readJSON text: jsonString
 //println(jsonObj.code_quality)
 
