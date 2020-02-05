@@ -16,7 +16,7 @@ def jsonString = jsondata
 def jsonObj = readJSON text: jsonString
 
 String a = jsonObj.code_quality.projects.project.quality_gate.metrics[0].metric
-String MetricCondition=a.replaceAll("\\[", "").replaceAll("\\]","");
+String metric=a.replaceAll("\\[", "").replaceAll("\\]","");
 	
 String b = jsonObj.code_quality.projects.project.quality_gate.metrics[0].operator
 String operator=b.replaceAll("\\[", "").replaceAll("\\]","");
