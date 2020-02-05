@@ -1,33 +1,31 @@
-import groovy.json.JsonSlurper 
+import groovy.json.*
 
 @NonCPS
-createRepo(String data){
-def jsonSlurper = new JsonSlurper() 
-def resultJson = jsonSlurper.parseText(data)
-def GateId = resultJson.gateid
-def credentials = resultJson.cname
-//def rid = resultJson.id
-//def projUrl = resultJson.url
+create(String metric,String operator,int warning,int error){
+echo metric
+def jsonSlurper = new JsonSlurper()
+def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/sonar/QualityGateDetails.json"),"UTF-8"))
+def resultJson = jsonSlurper.parse(reader)
+def GateId = resultJson.id
 
-httpRequest authentication: "${credentials}", contentType: "APPLICATION_JSON", 
-    
-    httpMode: 'POST',/* requestBody: 
-  """{
-    	"data":
-	{
-		"repoType": "hosted",
-        "id": ${rid},
-        "name": ${repoName},
-        "repoPolicy": "RELEASE",
-        "provider": "maven2",
-        "providerRole": "org.sonatype.nexus.proxy.repository.Repository",
-        "exposed": true,
-        "format": "maven2"
-	}
-        
-   }""",*/ url: "http://3.16.33.107:9000/api/qualitygates/create_condition?gateId=${GateId}&metric=critical_violations&op=GT&warning=5&error=10"
-   }
-	def call(){
-def request = libraryResource 'sonarConnectorData.json'
-createRepo(request)
+	sh "curl --location --request POST 'http://3.16.33.107:9000/api/qualitygates/create_condition?gateId=${GateId}&metric=${metric}&op=${operator}&warning=${warning}&error=${error}' \
+--header 'Authorization: Basic YWRtaW46YWRtaW4='"
+}
+def call(jsondata){
+def jsonString = jsondata
+
+def jsonObj = readJSON text: jsonString
+
+String a = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[1].metric
+String metric=a.replaceAll("\\[", "").replaceAll("\\]","");
+	
+String b = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[1].operator
+String operator=b.replaceAll("\\[", "").replaceAll("\\]","");
+
+int warning = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[1].warning
+	
+int error = jsonObj.code_quality.projects.project[0].quality_gate[0].metrics[1].error
+	
+create(metric,operator,warning,error)
+
 }
