@@ -1,16 +1,13 @@
-import groovy.json.JsonSlurper 
+def call(jsondata){
+def jsonString = jsondata
+//println(jsonString)
+def jsonObj = readJSON text: jsonString
+//println(jsonObj.code_quality)
 
-@NonCPS
-detailplan(String data){
-def jsonSlurper = new JsonSlurper() 
-def resultJson = jsonSlurper.parseText(data)
-def colkey= resultJson.colkey
-def credentials = resultJson.cname
-httpRequest authentication: "${credentials}", contentType: "APPLICATION_JSON", 
-    
-    httpMode: 'GET', url: "http://3.16.33.107:9000/api/measures/component?metricKeys=ncloc,complexity,violations&component=${colkey}"
-}
-	def call(){
-def request = libraryResource 'sonarConnectorData.json'
-detailplan(request)
+String a = jsonObj.code_quality.projects.project.project_key
+String ProjectKey=a.replaceAll("\\[", "").replaceAll("\\]","");
+
+
+	sh "curl --location --request GET 'http://3.16.33.107:9000/api/measures/component?metricKeys=ncloc,complexity,violations&component=${ProjectKey}' \
+--header 'Authorization: Basic YWRtaW46YWRtaW4='"
 }
