@@ -21,7 +21,6 @@ def call(message)
 //String a=jsonObj.code_quality.projects.project.project_name
 //String projectName=a.replaceAll("\\[", "").replaceAll("\\]","");
   
- println(message)
   Date date = new Date() 
   sh " echo '${date}' SONARQUBE ${message} >>log.txt"
 }
