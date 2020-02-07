@@ -4,7 +4,7 @@ import groovy.json.*
 create(String metric,String operator,int warning,int error){
 echo metric
 def jsonSlurper = new JsonSlurper()
-def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/sonar/QualityGateDetails.json"),"UTF-8"))
+def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/QualityGateDetails.json"),"UTF-8"))
 def resultJson = jsonSlurper.parse(reader)
 def GateId = resultJson.id
 
