@@ -4,7 +4,7 @@ withCredentials([usernamePassword(credentialsId: 'sonar_cred', passwordVariable:
   -H "Expect:" \
   -H 'Content-Type: text/json; charset=utf-8' \
   -d @myfile.json"""*/
-  sh "curl -u ${username}:${password} -X GET 'http://ec2-3-133-107-212.us-east-2.compute.amazonaws.com:9000/api/measures/component?component=BMIBeta&metricKeys=coverage,vulnerabilities,bugs,violations,complexity' -o metrics.json | json_reformat"
+  sh "curl -u ${username}:${password} -X GET 'http://ec2-3-133-107-212.us-east-2.compute.amazonaws.com:9000/api/measures/component?component=BMIBeta&metricKeys=coverage,vulnerabilities,bugs,violations,complexity' -o metrics.json | json"
   echo 'metrics collected'
 }
 }
