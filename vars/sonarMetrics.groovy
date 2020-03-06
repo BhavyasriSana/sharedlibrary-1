@@ -2,6 +2,7 @@ import groovy.json.*
 
 @NonCPS
 create(){
+  def jsonBuilder = new groovy.json.JsonBuilder()
   def jsonSlurper = new JsonSlurper()
   def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"),"UTF-8"))
   def jsonObj = jsonSlurper.parse(reader)
@@ -75,8 +76,10 @@ create(){
   for(j=0;j<LIST.size();j++){
     print(LIST[j])
   }
-  
-
+  jsonBuilder.SONAR(
+    "SonarMetrics" : LIST
+    
+    )
 }
 
 def call(jsondata){
