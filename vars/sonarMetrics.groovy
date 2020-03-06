@@ -10,8 +10,10 @@ create(){
   int score=10;
   for(i=0;i<jsonObj.component.measures.size();i++){
     def metric=jsonObj.component.measures[i].metric
+    print(metric)
     def d=jsonObj.component.measures[i].value
     double data = Double.parseDouble(d); 
+    print(data)
     
     if(metric.equals("sqale_index")){
       if(data<10){
@@ -59,6 +61,7 @@ create(){
       if(data<10){
         score+=10;
         LIST.add(["metric":metric,"score":score])
+        print(List)
       }
     }
   }
