@@ -66,7 +66,8 @@ create(String TeamName){
       }
     }
   }
-  jsonBuilder.${TeamName}(
+  jsonBuilder(
+    "Teamname":TeamName,
     "Metrics" : LIST
     
     )
