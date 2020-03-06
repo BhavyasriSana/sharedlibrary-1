@@ -1,7 +1,7 @@
 import groovy.json.*
 
 @NonCPS
-create(TeamNam){
+create(String TeamName){
   def jsonBuilder = new groovy.json.JsonBuilder()
   def jsonSlurper = new JsonSlurper()
   def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"),"UTF-8"))
@@ -65,7 +65,7 @@ create(TeamNam){
       }
     }
   }
-  jsonBuilder.TeamNam(
+  jsonBuilder.TeamName(
     "Metrics" : LIST
     
     )
@@ -80,6 +80,6 @@ def jsonObj = readJSON text: jsonString
 
 String a = jsonObj.riglet_info.name
 String TeamName=a.replaceAll("\\[", "").replaceAll("\\]","");
-  create(TeamNam){
+  create(TeamName){
 }
 }
