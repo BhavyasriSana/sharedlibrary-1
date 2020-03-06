@@ -19,42 +19,49 @@ create(){
       if(data<10){
         score+=10;
         LIST.add(["metric":metric,"score":score])
+        print(List)
       }
     }
     if(metric.equals("vulnerabilities")){
       if(data<10){
         score+=10;
         LIST.add(["metric":metric,"score":score])
+        print(List)
       }
     }
     if(metric.equals("coverage")){
       if(data>20){
         score+=10;
         LIST.add(["metric":metric,"score":score])
+        print(List)
       }
     }
     if(metric.equals("duplicated_lines")){
       if(data<100){
         score+=10;
         LIST.add(["metric":metric,"score":score])
+        print(List)
       }
     }
     if(metric.equals("complexity")){
       if(data<10){
         score+=10;
         LIST.add(["metric":metric,"score":score])
+        print(List)
       }
     }
     if(metric.equals("violations")){
       if(data<10){
         score+=10;
         LIST.add(["metric":metric,"score":score])
+        print(List)
       }
     }
     if(metric.equals("bugs")){
       if(data<10){
         score+=10;
         LIST.add(["metric":metric,"score":score])
+        print(List)
       }
     }
     if(metric.equals("tests")){
@@ -65,7 +72,9 @@ create(){
       }
     }
   }
-  print(List)
+  for(j=0;j<LIST.size();j++){
+    print(LIST[j])
+  }
   
 
 }
