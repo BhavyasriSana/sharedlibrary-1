@@ -13,7 +13,7 @@ def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/
 def resultJson = jsonSlurper.parse(reader)
   def jsonBuilder = new groovy.json.JsonBuilder()
   jsonBuilder.Sonar{
-  "Metrics":resultJson
+  "Metrics" : resultJson
   }
   File file = new File("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json")
 file.write(jsonBuilder.toPrettyString())
