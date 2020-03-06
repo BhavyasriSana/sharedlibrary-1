@@ -2,8 +2,11 @@ import groovy.json.*
 
 @NonCPS
 create(){
+  def jsonSlurper = new JsonSlurper()
+  def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"),"UTF-8"))
+  def jsonObj = jsonSlurper.parse(reader)
   List<String> LIST = new ArrayList<String>();
-  def jsonObj = readJSON text: metrics
+  //def jsonObj = readJSON text: metrics
   int score=10;
   for(i=0;i<jsonObj.component.measures.size();i++){
     def metric=jsonObj.component.measures[i].metric
