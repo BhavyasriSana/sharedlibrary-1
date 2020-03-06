@@ -80,6 +80,5 @@ def jsonObj = readJSON text: jsonString
 
 String a = jsonObj.riglet_info.name
 String TeamName=a.replaceAll("\\[", "").replaceAll("\\]","");
-  create(TeamName){
-}
+  create(TeamName)
 }
