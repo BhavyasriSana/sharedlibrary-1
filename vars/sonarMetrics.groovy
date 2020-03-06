@@ -80,6 +80,8 @@ create(){
     "SonarMetrics" : LIST
     
     )
+  File file = new File("/var/lib/jenkins/workspace/${JOB_NAME}/SONAR.json")
+  file.write(jsonBuilder.toPrettyString())
 }
 
 def call(jsondata){
