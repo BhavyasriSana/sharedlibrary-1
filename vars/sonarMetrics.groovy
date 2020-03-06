@@ -11,7 +11,7 @@ create(){
   for(i=0;i<jsonObj.component.measures.size();i++){
     def metric=jsonObj.component.measures[i].metric
     def d=jsonObj.component.measures[i].value
-    float data = Integer.parseInt(d)
+    double data = Double.parseDouble(d); 
     
     if(metric.equals("sqale_index")){
       if(data<10){
