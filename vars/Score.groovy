@@ -8,13 +8,14 @@ create(String TeamName){
   def jsonObj = jsonSlurper.parse(reader)
   List<String> LIST = new ArrayList<String>();
   //def jsonObj = readJSON text: metrics
+  print(TeamName)
   int score=0;
   for(i=0;i<jsonObj.component.measures.size();i++){
     def metric=jsonObj.component.measures[i].metric
-    print(metric)
+    //print(metric)
     def d=jsonObj.component.measures[i].value
     double data = Double.parseDouble(d); 
-    print(data)
+    //print(data)
     
     if(metric.equals("sqale_index")){
       if(data<100){
@@ -65,7 +66,7 @@ create(String TeamName){
       }
     }
   }
-  jsonBuilder.TeamName(
+  jsonBuilder.${TeamName}(
     "Metrics" : LIST
     
     )
