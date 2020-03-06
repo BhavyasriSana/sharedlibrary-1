@@ -12,9 +12,9 @@ withCredentials([usernamePassword(credentialsId: 'sonar_cred', passwordVariable:
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"),"UTF-8"))
 def resultJson = jsonSlurper.parse(reader)
   def jsonBuilder = new groovy.json.JsonBuilder()
-  jsonBuilder.Sonar{
+  jsonBuilder.Sonar(
   "Metrics" : resultJson
-  }
+  )
   File file = new File("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json")
 file.write(jsonBuilder.toPrettyString())
   return jsonBuilder
