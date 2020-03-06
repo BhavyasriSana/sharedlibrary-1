@@ -17,5 +17,6 @@ def resultJson = jsonSlurper.parse(reader)
   }
   File file = new File("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json")
 file.write(jsonBuilder.toPrettyString())
+  return jsonBuilder
 }
 }
