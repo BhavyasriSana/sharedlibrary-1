@@ -7,7 +7,7 @@ def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/
 def resultJson = jsonSlurper.parse(reader)
 def total = resultJson.component.measures[1].value
   echo "$total"
-sh """curl -i -XPOST 'http://ec2-13-58-47-71.us-east-2.compute.amazonaws.com:8086/write?db=Collector' --data-binary 'complexity =${total}' 
+sh """curl -i -XPOST 'http://18.222.223.64/write?db=mydb' --data-binary 'complexity =${total}' 
 """
 }
 
