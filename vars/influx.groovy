@@ -12,10 +12,10 @@ def resultJson = jsonSlurper.parse(reader)
   def t3=resultJson.Sonar.Metrics.component.measures[3].value
   //def total = 10
 //sh """curl -k --connect-timeout 30 -XPOST "http://18.222.223.64:8086/write?db=mydb&precision=s" --data-binary '${total}'"""
-  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARQ,duplicated_lines=${t0} field=1 
-  SONARQ,complexity=${t1} field=2 
-  SONARQ,violations=${t2} field=3 
-  SONARQ,sqale_index=${t3} field=4'"""
+  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARQ,Metric=duplicated_lines Value=${t0} field=1 
+  SONARQ,Metric=complexity Value=${t1} field=2 
+  SONARQ,Metric=violations Value=${t2} field=3 
+  SONARQ,Metric=sqale_index Value=${t3} field=4'"""
 }
 
 
