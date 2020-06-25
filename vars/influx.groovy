@@ -10,7 +10,7 @@ def resultJson = jsonSlurper.parse(reader)
   //def total = 10
   echo "$total"
 //sh """curl -k --connect-timeout 30 -XPOST "http://18.222.223.64:8086/write?db=mydb&precision=s" --data-binary '${total}'"""
-  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-raw 'sonarQube metrics=${resultJson}'"""
+  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary @/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"""
 }
 
 
