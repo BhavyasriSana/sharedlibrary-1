@@ -9,7 +9,7 @@ def resultJson = jsonSlurper.parse(reader)
   def total=resultJson.Sonar.Metrics.component.measures[1].value
   //def total = 10
   echo "$total"
-sh """curl -k --connect-timeout 30 -XPOST "http://18.222.223.64:8086/write?db=mydb&precision=s" --data-binary "${total}""""
+sh """curl -k --connect-timeout 30 -XPOST "http://18.222.223.64:8086/write?db=mydb&precision=s" --data-binary '${total}'"""
 }
 
 
