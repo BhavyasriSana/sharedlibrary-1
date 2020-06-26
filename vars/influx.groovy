@@ -14,7 +14,6 @@ def resultJson = jsonSlurper.parse(reader)
 //sh """curl -k --connect-timeout 30 -XPOST "http://18.222.223.64:8086/write?db=mydb&precision=s" --data-binary '${total}'"""
   sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARQUB,Metric=complexity Value=${t1}
   SONARQUBE,Metric=duplicated_lines Value=${t0}
-  SONARQUB,Metric=complexity Value=${t1}
   SONARQUB,Metric=violations Value=${t2}
   SONARQUB,Metric=sqale_index Value=${t3}'"""
 }
