@@ -12,10 +12,10 @@ def resultJson = jsonSlurper.parse(reader)
   def t3=resultJson.Sonar.Metrics.component.measures[3].value
   //def total = 10
 //sh """curl -k --connect-timeout 30 -XPOST "http://18.222.223.64:8086/write?db=mydb&precision=s" --data-binary '${total}'"""
-  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=duplicated_lines type=intrgral server=sonar Value=${t0}'"""
-  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=complexity type=intrgral server=sonar Value=${t1}'"""
-  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=violations type=intrgral server=sonar Value=${t2}'"""
-  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=sqale_index type=intrgral server=sonar Value=${t3}'"""
+  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=duplicated_lines type=intrgral server=sonar Value=${t0} 1593159883918987231'"""
+  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=complexity type=intrgral server=sonar Value=${t1} 1593159883918987232'"""
+  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=violations type=intrgral server=sonar Value=${t2} 1593159883918987233'"""
+  sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=sqale_index type=intrgral server=sonar Value=${t3} 1593159883918987234'"""
 }
 
 
