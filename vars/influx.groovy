@@ -15,7 +15,8 @@ def resultJson = jsonSlurper.parse(reader)
     print (t0)
     print (t1)
     sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=SonarDB" --data-binary 'SONARMETRIC,Metric=${t0} Value=${t1}'"""
-    print("loop completed")
+    
+    print(i)
   }
 }
 /*create(){
