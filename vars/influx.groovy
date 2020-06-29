@@ -16,9 +16,10 @@ def resultJson = jsonSlurper.parse(reader)
     String t0=resultJson.Sonar.Metrics.component.measures[i].metric
 	  String metric=t0.replaceAll("\\[", "").replaceAll("\\]","");
     def t1=resultJson.Sonar.Metrics.component.measures[i].value
+	  int value = Integer.parseInt(t1);
     	  print (t0)
           print (t1)
- 	  create(metric,t1)
+ 	  create(metric,value)
   }
 
 }
