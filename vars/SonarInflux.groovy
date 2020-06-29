@@ -9,6 +9,7 @@ def count = resultJson.count
 echo "hi"
 	def t0=1
 	def t1=2
+	echo "inside function"
       sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=SonarDB" --data-binary 'SONARMETRIC,Metric=${t0} Value=${t1}'"""
 }
 
