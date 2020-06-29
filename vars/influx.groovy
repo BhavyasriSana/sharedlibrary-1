@@ -1,7 +1,7 @@
 import groovy.json.*
 
 @NonCPS
-create(String t0,object t1){
+create(String t0,Object t1){
       sh "curl -i -XPOST http://18.222.223.64:8086/write?db=SonarDB --data-binary 'SONARMETRIC,Metric=${t0} Value=${t1}'"
 }
 def call(){
