@@ -14,12 +14,14 @@ def resultJson = jsonSlurper.parse(reader)
   print(size)
   for(int i=0;i<size;i++){
     print(i)
-    String t0=resultJson.Sonar.Metrics.component.measures[i].metric
+    	  String t0=resultJson.Sonar.Metrics.component.measures[i].metric
 	  String metric=t0.replaceAll("\\[", "").replaceAll("\\]","");
-    int t1=Integer.parseInt(resultJson.Sonar.Metrics.component.measures[i].value)
+	  String t3=resultJson.Sonar.Metrics.component.measures[i].value
+	  
+    //int t1=Integer.parseInt(resultJson.Sonar.Metrics.component.measures[i].value)
 	  //int value = Integer.parseInt(t1);
     	  print (t0)
-          print (t1)
- 	  create(metric,t1)
+          print (t3)
+ 	  create(metric,t3)
   }
 }
