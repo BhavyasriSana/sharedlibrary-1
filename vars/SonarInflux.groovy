@@ -1,7 +1,8 @@
 import groovy.json.*
 
 @NonCPS
-create(String t0,String t1){
+create(){
+//create(String t0,String t1){
 	echo t0
       sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=SonarDB" --data-binary 'SONARMETRIC,Metric=${t0} Value=${t1}'"""
 }
@@ -22,6 +23,7 @@ def resultJson = jsonSlurper.parse(reader)
 	  //int value = Integer.parseInt(t1);
     	  print (t0)
           print (t3)
- 	  create(metric,t3)
+ 	  //create(metric,t3)
+	  create()
   }
 }
