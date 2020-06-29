@@ -6,6 +6,18 @@ def jsonSlurper = new JsonSlurper()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"),"UTF-8"))
 def resultJson = jsonSlurper.parse(reader)
   print (resultJson)
+  def size=resultJson.Sonar.Metrics.component.measures[0].size
+  for(int i=0;i<size;i++){
+    def t0=resultJson.Sonar.Metrics.component.measures[i].metric
+    def t1=resultJson.Sonar.Metrics.component.measures[i].value
+    sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=SonarDB" --data-binary 'SONARMETRIC,Metric=${t0} Value=${t1} 1593159883918987231'"""
+  }
+}
+/*create(){
+def jsonSlurper = new JsonSlurper()
+def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"),"UTF-8"))
+def resultJson = jsonSlurper.parse(reader)
+  print (resultJson)
   def t0=resultJson.Sonar.Metrics.component.measures[0].value
   def t1=resultJson.Sonar.Metrics.component.measures[1].value
   def t2=resultJson.Sonar.Metrics.component.measures[2].value
@@ -16,7 +28,7 @@ def resultJson = jsonSlurper.parse(reader)
   sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=complexity type=intrgral server=sonar Value=${t1} 1593159883918987232'"""
   sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=violations type=intrgral server=sonar Value=${t2} 1593159883918987233'"""
   sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATA,Metric=sqale_index type=intrgral server=sonar Value=${t3} 1593159883918987234'"""
-}
+}*/
 
 
 def call()
