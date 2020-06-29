@@ -12,6 +12,7 @@ def resultJson = jsonSlurper.parse(reader)
     def t0=resultJson.Sonar.Metrics.component.measures[i].metric
     def t1=resultJson.Sonar.Metrics.component.measures[i].value
     print (t0)
+    print(t1)
     sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=SonarDB" --data-binary 'SONARMETRIC,Metric=${t0} Value=${t1} 1593159883918987231'"""
   }
 }
