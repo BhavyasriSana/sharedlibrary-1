@@ -13,9 +13,9 @@ def resultJson = jsonSlurper.parse(reader)
   print(size)
   for(int i=0;i<size;i++){
     print(i)
-    def t0=resultJson.Sonar.Metrics.component.measures[i].metric
+    String t0=resultJson.Sonar.Metrics.component.measures[i].metric
 	  String metric=t0.replaceAll("\\[", "").replaceAll("\\]","");
-    def t1=resultJson.Sonar.Metrics.component.measures[i].value
+    int t1=resultJson.Sonar.Metrics.component.measures[i].value
 	  int value=t1.replaceAll("\\[", "").replaceAll("\\]","");
     	  print (t0)
           print (t1)
