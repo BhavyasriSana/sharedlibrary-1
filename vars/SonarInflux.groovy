@@ -3,10 +3,10 @@ import groovy.json.*
 @NonCPS
 create(){
 def jsonSlurper = new JsonSlurper()
-def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/commit.json"),"UTF-8"))
+def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metric.json"),"UTF-8"))
 def resultJson = jsonSlurper.parse(reader)
 def count = resultJson.count
-echo "$count"
+echo "hi"
 	def t0=1
 	def t1=2
       sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=SonarDB" --data-binary 'SONARMETRIC,Metric=${t0} Value=${t1}'"""
