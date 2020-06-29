@@ -25,6 +25,7 @@ def resultJson = jsonSlurper.parse(reader)
     	  print (t0)
           print (t3)
  	  //create(metric,t3)
-	  create()
+	  
   }
+	create()
 }
