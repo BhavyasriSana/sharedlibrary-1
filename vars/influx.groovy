@@ -6,7 +6,7 @@ def jsonSlurper = new JsonSlurper()
 def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"),"UTF-8"))
 def resultJson = jsonSlurper.parse(reader)
   print (resultJson)
-  def size=resultJson.Sonar.Metrics.component.measures[0].size
+  def size=resultJson.Sonar.Metrics.component.measures.size
   print(size)
   for(int i=0;i<size;i++){
     print (i)
