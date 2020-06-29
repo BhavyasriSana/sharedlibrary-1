@@ -10,7 +10,7 @@ echo "hi"
 	def t0=1
 	def t1=2
 	echo "inside function"
-      sh "curl -i -XPOST http://18.222.223.64:8086/write?db=mydb --data-binary 'SONARDATAnew,Metric=complexity type=intrgral server=sonar Value=${t1} 1593159883918987232'"
+      sh "curl -i -XPOST http://18.222.223.64:8086/write?db=mydb --data-binary 'SONARDATAnew,Metric=complexity Value=${t1} 1593159883918987232'"
 }
 
 
