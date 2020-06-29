@@ -3,7 +3,8 @@ import groovy.json.*
 @NonCPS
 create(){
 //create(String t0,String t1){
-	echo t0
+	def t0=1
+	def t1=2
       sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=SonarDB" --data-binary 'SONARMETRIC,Metric=${t0} Value=${t1}'"""
 }
 def call(){
