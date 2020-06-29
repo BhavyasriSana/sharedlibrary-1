@@ -35,7 +35,7 @@ def call()
     	  	String t0=resultJson.Sonar.Metrics.component.measures[i].metric
 	  	String metric=t0.replaceAll("\\[", "").replaceAll("\\]","");
 	  	String t3=resultJson.Sonar.Metrics.component.measures[i].value
-		int value = Integer.parseInt(t1);
+		int value = Integer.parseInt(t3);
 		print (metric)
           	print (value)
 	}
