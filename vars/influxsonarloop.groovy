@@ -1,11 +1,11 @@
 import groovy.json.*
 import groovy.json.JsonSlurper 
 
-	@NonCPS
-	db(String metric,float value){
-		def var=sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
+@NonCPS
+db(String metric,float value){
+	def var=sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
 		
-	}
+}
 
 @NonCPS
 create(){
@@ -28,11 +28,6 @@ create(){
 		//sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
 	}
 }
-	@NonCPS
-	db(String metric,float value){
-		def var=sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
-		
-	}
 
 def call()
 {
