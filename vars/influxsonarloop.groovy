@@ -1,34 +1,13 @@
 @NonCPS
 db(String metric,float value){
-    def var=sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
-        
+    def var=sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""    
 }
-
- 
-
-
-    
-
- 
-
 def call()
 {
     
     def resultJson = readJSON file :'metrics.json'
       print (resultJson)
-    /*int size=0
-    while(resultJson.Sonar.Metrics.component.measures[size].metric!="NULL"||resultJson.Sonar.Metrics.component.measures[size].metric!="null"){
-    size++
-    if(resultJson.Sonar.Metrics.component.measures[size].metric=="NULL"||resultJson.Sonar.Metrics.component.measures[size].metric=="null"){
-    break
-    }
-    }*/
-      //def size=len(resultJson.Sonar.Metrics.component.measures)
-      //print(size)
     def size=resultJson.Sonar.Metrics.component.measures.size()
-    /*print(size)
-    int lent=size.size()
-    print (lent)*/
       for(int i=0;i<size;i++){
         
             print(i)
@@ -39,7 +18,6 @@ def call()
         print (metric)
               print (value)
         db(metric,value)
-        //sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
     }
 }
  
