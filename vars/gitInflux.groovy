@@ -17,7 +17,7 @@ def commitscount = resultJson2.size()
 	/*sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'GIT,Metric=GitRepoCount Value=${repocount} 1593515953791341888
 	Git,Metric=GitCommitsCountInRepo Value=${commitscount} 1593515953791341888'"""*/
 	
-	def out=sh script:'curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'GIT,mytag=3 myfield=89 1463689152000000000',returnStdout:true
+	def out=sh script: 'curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'GIT,mytag=3 myfield=89 1463689152000000000',returnStdout: true
 
 	
 }
