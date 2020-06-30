@@ -25,14 +25,15 @@ def call()
     }*/
       //def size=len(resultJson.Sonar.Metrics.component.measures)
       //print(size)
-    def size=resultJson.Sonar.Metrics.component.measures.length
+    def size=resultJson.Sonar.Metrics.component.measures.value
     print(size)
-    int len = 0
-    while(size[len]=="null"){
-    len++
+    int lent = 0
+    while(size[lent]=="null"){
+    lent++
+        print(lent)
     }
-    print (len)
-      for(int i=0;i<len;i++){
+    print (lent)
+      for(int i=0;i<lent;i++){
         
             print(i)
               String t0=resultJson.Sonar.Metrics.component.measures[i].metric
