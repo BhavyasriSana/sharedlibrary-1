@@ -16,16 +16,16 @@ def call()
     
     def resultJson = readJSON file :'metrics.json'
       print (resultJson)
-    int size=0
+    /*int size=0
     while(resultJson.Sonar.Metrics.component.measures[size].metric!="NULL"||resultJson.Sonar.Metrics.component.measures[size].metric!="null"){
     size++
     if(resultJson.Sonar.Metrics.component.measures[size].metric=="NULL"||resultJson.Sonar.Metrics.component.measures[size].metric=="null"){
     break
     }
-    }
+    }*/
       //def size=len(resultJson.Sonar.Metrics.component.measures)
       //print(size)
-      for(int i=0;i<size;i++){
+      for(int i=0;i<resultJson.Sonar.Metrics.component.measures.length;i++){
         
             print(i)
               String t0=resultJson.Sonar.Metrics.component.measures[i].metric
