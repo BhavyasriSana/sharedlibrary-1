@@ -1,7 +1,3 @@
-/*@NonCPS
-db(String metric,float value){
-    def var=sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""    
-}*/
 def call(JSON)
 {
     def jsonString = JSON
@@ -24,7 +20,6 @@ def call(JSON)
         print (metric)
               print (value)
           sh"""curl -i -XPOST "${IP}/write?db=${database}" --data-binary '${table},Metric=${metric} Value=${value}'"""
-        //db(metric,value)
     }
 }
  
