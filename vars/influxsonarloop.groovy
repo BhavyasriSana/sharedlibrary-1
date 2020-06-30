@@ -14,11 +14,11 @@ create(){
     		print(i)
     	  	String t0=resultJson.Sonar.Metrics.component.measures[i].metric
 	  	String metric=t0.replaceAll("\\[", "").replaceAll("\\]","");
-	  	String t3=resultJson.Sonar.Metrics.component.measures[i].value
+	  	def t3=resultJson.Sonar.Metrics.component.measures[i].value
 		float value=Float.parseFloat(t3);
 		print (metric)
           	print (value)
-		db(metric,value)
+		db(metric,t3)
 		//sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
 	}
 }
