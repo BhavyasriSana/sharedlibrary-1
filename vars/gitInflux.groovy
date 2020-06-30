@@ -19,7 +19,7 @@ def commitscount = resultJson2.size()
 	
 	def out="""curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'GIT1,mytag=3 myfield=89 1463689157000000000
 	GIT1,mytag=2 myfield=34 1463689159000000000'""".execute().text
-	echo $out
+	echo out
 
 	
 }
