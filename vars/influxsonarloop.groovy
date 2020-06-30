@@ -25,6 +25,7 @@ create(){
 	@NonCPS
 	db(String metric,float value){
 		var="$(curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}')"
+			def response = sh(script: 'curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'', returnStdout: true)
 		
 	}
 
