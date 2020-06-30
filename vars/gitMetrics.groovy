@@ -2,7 +2,8 @@ import groovy.json.*
 import groovy.json.JsonSlurper 
 
 def call(JSON){
-	def jsonObja = readJSON text: JSON
+	def jsonString = JSON
+	def jsonObja = readJSON text: jsonString
 	def IP=jsonObja.GIT.GitUrl
   	print(IP)
 	def user=jsonObja.GIT.GitUserName
