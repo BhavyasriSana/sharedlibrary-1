@@ -10,5 +10,5 @@ def call(JSON){
 	def pass=jsonObja.GIT.GitPassword
   	def repoName=jsonObja.GIT.GitRepoName
  sh 'curl -u $user:$pass -H "ContentType: application/json; charset=UTF-8"  ${IP}/users/${user}/repos -o gitrepos.json'
- sh "curl -X GET -u $user:$pass ${IP}/repos/${user}/${repoName}/commits -o commits.json"
+ //sh "curl -X GET -u $user:$pass ${IP}/repos/${user}/${repoName}/commits -o commits.json"
 }
