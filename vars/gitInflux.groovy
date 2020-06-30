@@ -7,10 +7,10 @@ def call(JSON){
 	def database=jsonObja.INFLUXDB.DatabaseName
 	def table=jsonObja.INFLUXDB.GitTableName
 
-def resultJson = readJSON file :'gitrepos.json'
+//def resultJson = readJSON file :'gitrepos.json'
   //print (resultJson)
-def repocount = resultJson.size()
-	print(repocount)
+//def repocount = resultJson.size()
+	//print(repocount)
 
 def resultJson2 = readJSON file :'commits.json'	
   //print (resultJson2)
