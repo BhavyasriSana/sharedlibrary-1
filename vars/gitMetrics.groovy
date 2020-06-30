@@ -1,4 +1,5 @@
 import groovy.json.*
+import groovy.json.JsonSlurper 
 
 def call(JSON){
 	def jsonObja = readJSON text: JSON
