@@ -17,10 +17,5 @@ def resultJson2 = readJSON file :'commits.json'
 def commitscount = resultJson2.size()
 	print(commitscount)
 	sh """curl -i -XPOST "${IP}/write?db=${database}" --data-binary '${table},Metric=GitRepoCount Value=${repocount}
-	${table},Metric=GitCommitsInRepo Value=${commitscount}'"""
-	
-	/*def out=script: ('curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'GIT1,mytag=3 myfield=89 1463689157000000000',returnStdout: true)	 
-	print("value"+out)*/
-
-	
+	${table},Metric=GitCommitsInRepo Value=${commitscount}'"""	
 }
