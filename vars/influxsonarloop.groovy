@@ -1,8 +1,3 @@
-import groovy.json.*
-import groovy.json.JsonSlurper 
-
- 
-
 @NonCPS
 db(String metric,float value){
     def var=sh """curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
@@ -18,9 +13,8 @@ db(String metric,float value){
 
 def call()
 {
-    def jsonSlurper = new JsonSlurper()
-    def reader = new BufferedReader(new InputStreamReader(new FileInputStream("/var/lib/jenkins/workspace/${JOB_NAME}/metrics.json"),"UTF-8"))
-    def resultJson = jsonSlurper.parse(reader)
+    
+    def resultJson = readJSON file :'metrics.json'
       print (resultJson)
       def size=resultJson.Sonar.Metrics.component.measures.size
       print(size)
