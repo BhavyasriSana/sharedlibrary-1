@@ -1,6 +1,6 @@
 
-@NonCPS
-create(){
+def call(){
+
 def resultJson = readJSON file :'gitrepos.json'
   //print (resultJson)
 def repocount = resultJson.size()
@@ -16,11 +16,4 @@ def commitscount = resultJson2.size()
 	print("value"+out)*/
 
 	
-}
-
-
-
-def call()
-{
-	create()
 }
