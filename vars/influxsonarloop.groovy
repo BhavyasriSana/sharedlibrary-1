@@ -4,6 +4,12 @@ db(String metric,float value){
 }*/
 def call()
 {
+    def jsonString = JSON
+	def jsonObja = readJSON text: jsonString
+	def IP=jsonObja.INFLUXDB.InfluxUrl
+  	print(IP)
+	def database=jsonObja.INFLUXDB.DatabaseName
+	def table=jsonObja.INFLUXDB.SonarTableName
     
     def resultJson = readJSON file :'metrics.json'
       print (resultJson)
@@ -17,7 +23,7 @@ def call()
         float value=Float.parseFloat(t3);
         print (metric)
               print (value)
-          sh"""curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'SONARDATAnew,Metric=${metric} Value=${value}'"""
+          sh"""curl -i -XPOST "${IP}/write?db=${database}" --data-binary '${table},Metric=${metric} Value=${value}'"""
         //db(metric,value)
     }
 }
