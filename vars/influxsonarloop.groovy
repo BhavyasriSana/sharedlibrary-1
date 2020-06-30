@@ -16,8 +16,8 @@ def call()
     
     def resultJson = readJSON file :'metrics.json'
       print (resultJson)
-      //def size=resultJson.Sonar.Metrics.component.measures.length
-      //print(size)
+      def size=len(resultJson.Sonar.Metrics.component.measures)
+      print(size)
       for(int i=0;i<7;i++){
         
             print(i)
