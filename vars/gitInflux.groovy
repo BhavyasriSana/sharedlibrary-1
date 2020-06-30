@@ -18,7 +18,7 @@ def commitscount = resultJson2.size()
 	Git,Metric=GitCommitsCountInRepo Value=${commitscount} 1593515953791341888'"""*/
 	
 	def out=sh script:'curl -i -XPOST "http://18.222.223.64:8086/write?db=mydb" --data-binary 'GIT,mytag=3 myfield=89 1463689152000000000
-GIT,mytag=2 myfield=34 1463689152000000000',returnStdout:true
+	GIT,mytag=2 myfield=34 1463689152000000000',returnStdout:true
 
 	
 }
