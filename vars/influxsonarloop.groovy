@@ -27,7 +27,7 @@ def call()
       //print(size)
     def size=resultJson.Sonar.Metrics.component.measures.value
     print(size)
-    int lent=size.length
+    int lent=size.size()
     print (lent)
       for(int i=0;i<lent;i++){
         
